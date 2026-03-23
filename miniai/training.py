@@ -3,28 +3,28 @@
 # %% auto #0
 __all__ = ['accuracy', 'report', 'Dataset', 'fit', 'get_dls']
 
-# %% ../nbs/04_minibatch_training.ipynb #bfecd00f
+# %% ../nbs/04_minibatch_training.ipynb #1a00e556
 import pickle,gzip,math,os,time,shutil,torch,matplotlib as mpl,numpy as np,matplotlib.pyplot as plt
 from pathlib import Path
 from torch import tensor,nn
 import torch.nn.functional as F
 
-# %% ../nbs/04_minibatch_training.ipynb #aa7d9542
+# %% ../nbs/04_minibatch_training.ipynb #83cc8762
 def accuracy(out, yb): return (out.argmax(dim=1)==yb).float().mean()
 
-# %% ../nbs/04_minibatch_training.ipynb #b2f904d3
+# %% ../nbs/04_minibatch_training.ipynb #f5c1f96d
 def report(loss, preds, yb): print(f'{loss:.2f}, {accuracy(preds, yb):.2f}')
 
-# %% ../nbs/04_minibatch_training.ipynb #5df719a9
+# %% ../nbs/04_minibatch_training.ipynb #4e8a36f7
 class Dataset():
     def __init__(self, x, y): self.x,self.y = x,y
     def __len__(self): return len(self.x)
     def __getitem__(self, i): return self.x[i],self.y[i]
 
-# %% ../nbs/04_minibatch_training.ipynb #aa046f63
+# %% ../nbs/04_minibatch_training.ipynb #4c642d9e
 from torch.utils.data import DataLoader, SequentialSampler, RandomSampler, BatchSampler
 
-# %% ../nbs/04_minibatch_training.ipynb #c000bc0a
+# %% ../nbs/04_minibatch_training.ipynb #e0897aeb
 def fit(epochs, model, loss_func, opt, train_dl, valid_dl):
     for epoch in range(epochs):
         model.train()
@@ -46,7 +46,7 @@ def fit(epochs, model, loss_func, opt, train_dl, valid_dl):
         print(epoch, tot_loss/count, tot_acc/count)
     return tot_loss/count, tot_acc/count
 
-# %% ../nbs/04_minibatch_training.ipynb #87c2b05d
+# %% ../nbs/04_minibatch_training.ipynb #16f8128b
 def get_dls(train_ds, valid_ds, bs, **kwargs):
     return (DataLoader(train_ds, batch_size=bs, shuffle=True, **kwargs),
             DataLoader(valid_ds, batch_size=bs*2, **kwargs))
