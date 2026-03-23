@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
 ]
-dependencies = ["torch", "matplotlib", "datasets"]
+dependencies = ["torch", "matplotlib", "datasets", "torchvision"]
 
 [project.urls]
 Repository = "https://github.com/yowashi23/miniai"
