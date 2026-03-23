@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "miniai"
+  site-url: "https://yowashi23.github.io/miniai"
+  description: "personal repo for miniai"
+  repo-branch: main
+  repo-url: "https://github.com/yowashi23/miniai"
